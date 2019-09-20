@@ -288,3 +288,12 @@ write.csv(dat4,"../Data_Course_Money/Assignments/Assignment_3/DFColony_1_2.csv",
 
 data("mtcars")
 ?mtcars
+
+data("Utah_Religions_by_County")
+levels(Utah_Religions_by_County)
+
+data("mtcars")
+levels("mtcars")
+data("thatch_ant")
+levels("thatch_ant")
+levels(thatch_ant$Colony)
