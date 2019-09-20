@@ -4,14 +4,19 @@
 #Your first task, though, is to create separate histograms of the DNA concentrations 
 #for Katy and Ben. Make sure to add nice labels to these (x-axis and main title).
 
-dna<-read.csv("Exam_1/DNA_Conc_by_Extraction_Date.csv")
+dna<-read.csv("../Exam_1/DNA_Conc_by_Extraction_Date.csv")
 
 names(dna)
 
-class(dna) #data.frame = needs to be numeric
+class(dna$Year_Collected) #data.frame = needs to be numeric
+class(dna$Extract.Code)
+class(dna$Date_Collected)
+class(dna$DNA_Concentration_Katy)
+class(dna$Lab)
+
 
 library(dplyr)
-dna2 <- mutate_all(dna, function(x) as.numeric(as.character(x)))
+dna2 <- mutate_all(dna$, function(x) as.numeric(as.character(x)))
 dna2 <- as.numeric(dna)
 dna2<-dna %>%
   mutate_all(as.numeric)
@@ -20,16 +25,18 @@ class(dna2)
 
 #histograms of DNA concentrations (add labels)
 
-histogram(MV_Houses$'House Price',xlab = "House Prices (in $1,000s)",
-          ylab="Relative Frequency x 100",)
-hist(dna$DNA_Concentration_Katy, xlab = dna$Date_Collected, ylab = dna$DNA_Concentration_Katy, main = "DNA Concentration")
-hist(ben)
 
-plot(x=dna$DNA_Concentration_Katy, y=dna$Year_Collected)
+hist(dna$DNA_Concentration_Katy,x=dna$Year_Collected, xlab = "Year Collected", 
+     ylab = "DNA Concentration for Katy", main = "DNA Concentration", breaks = 6)
+
+hist(dna$DNA_Concentration_Ben,x=dna$Year_Collected, xlab = "Year Collected", 
+     ylab = "DNA Concentration for Ben", main = "DNA Concentration", breaks = 7)
+
+#plot(x=dna$DNA_Concentration_Katy, y=dna$Year_Collected)
 
 
-hist(dna, x=dna$Year_Collected, y=dna$DNA_Concentration_Katy)
-hist(dna,x=dna$DNA_Concentration_Katy)
+#hist(dna, x=dna$Year_Collected, y=dna$DNA_Concentration_Katy)
+#hist(dna,x=dna$DNA_Concentration_Katy)
 
 hist(dna2, 
      main="Histogram for DNA Concentration", 
