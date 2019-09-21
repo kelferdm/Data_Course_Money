@@ -4,11 +4,13 @@
 #Your first task, though, is to create separate histograms of the DNA concentrations 
 #for Katy and Ben. Make sure to add nice labels to these (x-axis and main title).
 
-dna<-read.csv("Exam_1/DNA_Conc_by_Extraction_Date.csv")
+dna<-read.csv("../Exam_1/DNA_Conc_by_Extraction_Date.csv")
 
 names(dna)
 
 class(dna) #data.frame = needs to be numeric
+class(dna$Year_Collected)
+class(dna$DNA_Concentration_Katy)
 
 library(dplyr)
 dna2 <- mutate_all(dna, function(x) as.numeric(as.character(x)))
@@ -20,24 +22,9 @@ class(dna2)
 
 #histograms of DNA concentrations (add labels)
 
-histogram(MV_Houses$'House Price',xlab = "House Prices (in $1,000s)",
-          ylab="Relative Frequency x 100",)
-hist(dna$DNA_Concentration_Katy, xlab = dna$Date_Collected, ylab = dna$DNA_Concentration_Katy, main = "DNA Concentration")
-hist(ben)
 
-plot(x=dna$DNA_Concentration_Katy, y=dna$Year_Collected)
-
-
-hist(dna, x=dna$Year_Collected, y=dna$DNA_Concentration_Katy)
-hist(dna,x=dna$DNA_Concentration_Katy)
-
-hist(dna2, 
-     main="Histogram for DNA Concentration", 
-     xlab="Concentrations", 
-     border="blue", 
-     col="green",
-     breaks = 6)
-
+hist(dna$DNA_Concentration_Katy, xlab = "Concentration" , ylab = "Frequency" , main="DNA Concentration", breaks = 6)
+hist(dna$DNA_Concentration_Ben, xlab="Concentration", ylab = "Freqency", main = "DNA Concentration", breaks=7)
 
 #II. 	
 #Your second task is to look at DNA concentrations from the different extraction years. 
@@ -55,13 +42,17 @@ summary(katy)
 names(dna)
 #boxplot(dna~dna$Year_Collected,xlab="Katy", ylab="Year")
 ?boxplot
-boxplot(dna~katy,data=dna,x=katy, y=dna$Year_Collected, xlab="Year", ylab ="Concentration")
-dna$DNA_Concentration_Katy
-#year<-dna[dna$Year_Collected,]
-#dna[dna$DNA_Concentration_Katy,]
-    
-#dna[dna$Extract.Code,]
-#dna[dna$Date_Collected,]
+
+
+#create vector for Years and Katy called katyyear
+katyyear <-dna[,c('Year_Collected', 'DNA_Concentration_Katy')]
+benyear <- dna[,c('Year_Collected', 'DNA_Concentration_Ben')]
+#use vector to compare both year and katy
+#katy and years
+
+boxplot(DNA_Concentration_Katy ~ Year_Collected, data = dna, xlab="Year", ylab = "DNA Concentrations", main="Katy's Extractions")
+
+boxplot(DNA_Concentration_Ben ~ Year_Collected, data=dna, xlab="Year", ylab = "DNA Concentrations", main="Ben's Extrations")
 
 
 #IV.
@@ -77,9 +68,15 @@ summary(ben)
 summary(katy)
 dna$DNA_Concentration_Ben
 
-min(dna$DNA_Concentration_Ben)
-min(dna$DNA_Concentration_Katy)
+min(katyyear)
+summary(benyear)
+summary(katyyear)
 
+all(katyyear==benyear)
+
+
+benkaty<-dna[,c('Year_Collected','DNA_Concentration_Ben','DNA_Concentration_Katy')]
+summary(benkaty)
 
 
 #V.
