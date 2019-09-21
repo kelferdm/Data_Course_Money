@@ -109,6 +109,14 @@ all(katyyear==benyear)
 benkaty<-dna[,c('Year_Collected','DNA_Concentration_Ben','DNA_Concentration_Katy')]
 summary(benkaty)
 
+# Find difference between Ben and Katy
+difference <- dna$DNA_Concentration_Ben - dna$DNA_Concentration_Katy
+
+# find maximum difference
+max.difference <- which(difference == max(difference))
+
+# use that to find the year in which it occurred
+dna[max.difference,"Year_Collected"]
 
 #V.
 #Do another subset of the data for me. 
@@ -125,13 +133,26 @@ plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben,
 
 #which(rowSums(dna$DNA_Concentration_Ben) == max(rowSums(dna$DNA_Concentration_Ben)))
 
+# Subset to "Downstairs"
+down <- dat[dat$Lab == "Downstairs",]
 
-dateforben <- 
-downstair$Date_Collected
+# convert "Date_Collected" into POSIXct date-time class
+down$Date_Collected <- as.POSIXct(down$Date_Collected)
 
+# make scatterplot
+plot(x=down$Date_Collected,y=down$DNA_Concentration_Ben)
+
+dateforben <- downstair$Date_Collected
+
+#subset for Downstairs
 downstair<-dna[dna$Lab == "Downstairs",]
 
-jpeg("../Data_Course_Money/Exam_1/Ben_DNA_over_time.jpg")
+#convert date-time
+downstair$Date_Collected <- as.POSIXct(downstair$Date_Collected)
+plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
+
+
+jpeg("../Exam_1/Ben_DNA_over_time1.jpg")
 plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
 dev.off
 
