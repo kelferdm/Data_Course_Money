@@ -154,7 +154,7 @@ downstair$Date_Collected <- as.POSIXct(downstair$Date_Collected)
 plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
 
 
-jpeg("Test.jpeg")
+jpeg("Ben_DNA_over_time.jpeg")
 plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
 dev.off()
 
