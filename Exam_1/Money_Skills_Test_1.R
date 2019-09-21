@@ -80,11 +80,13 @@ katyyear <-dna[,c('Year_Collected', 'DNA_Concentration_Katy')]
 benyear <- dna[,c('Year_Collected', 'DNA_Concentration_Ben')]
 #use vector to compare both year and katy
 #katy and years
-
+jpeg("Money_Plot1.jpeg")
 boxplot(DNA_Concentration_Katy ~ Year_Collected, data = dna, xlab="Year", ylab = "DNA Concentrations", main="Katy's Extractions")
+dev.off()
 
+jpeg("Money_Plot2.jpeg")
 boxplot(DNA_Concentration_Ben ~ Year_Collected, data=dna, xlab="Year", ylab = "DNA Concentrations", main="Ben's Extrations")
-
+dev.off()
 
 #IV.
 #Take a look at Ben's concentrations vs Katy's concentrations. You can do this however you 
@@ -140,7 +142,7 @@ down <- dat[dat$Lab == "Downstairs",]
 down$Date_Collected <- as.POSIXct(down$Date_Collected)
 
 # make scatterplot
-plot(x=down$Date_Collected,y=down$DNA_Concentration_Ben)
+plot(x=downstair$Date_Collected,y=downstair$DNA_Concentration_Ben)
 
 dateforben <- downstair$Date_Collected
 
@@ -152,7 +154,7 @@ downstair$Date_Collected <- as.POSIXct(downstair$Date_Collected)
 plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
 
 
-jpeg("../Exam_1/Ben_DNA_over_time1.jpg")
+jpeg("Test.jpeg")
 plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
-dev.off
+dev.off()
 
