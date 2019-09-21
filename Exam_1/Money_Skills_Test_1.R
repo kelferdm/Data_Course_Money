@@ -8,12 +8,21 @@ dna<-read.csv("../Exam_1/DNA_Conc_by_Extraction_Date.csv")
 
 names(dna)
 
+<<<<<<< HEAD
 class(dna) #data.frame = needs to be numeric
 class(dna$Year_Collected)
 class(dna$DNA_Concentration_Katy)
+=======
+class(dna$Year_Collected) #data.frame = needs to be numeric
+class(dna$Extract.Code)
+class(dna$Date_Collected)
+class(dna$DNA_Concentration_Katy)
+class(dna$Lab)
+
+>>>>>>> 6ecff8970a273471acf9858e1d8e9c49c1fa2b7f
 
 library(dplyr)
-dna2 <- mutate_all(dna, function(x) as.numeric(as.character(x)))
+dna2 <- mutate_all(dna$, function(x) as.numeric(as.character(x)))
 dna2 <- as.numeric(dna)
 dna2<-dna %>%
   mutate_all(as.numeric)
@@ -22,6 +31,28 @@ class(dna2)
 
 #histograms of DNA concentrations (add labels)
 
+<<<<<<< HEAD
+=======
+
+hist(dna$DNA_Concentration_Katy,x=dna$Year_Collected, xlab = "Year Collected", 
+     ylab = "DNA Concentration for Katy", main = "DNA Concentration", breaks = 6)
+
+hist(dna$DNA_Concentration_Ben,x=dna$Year_Collected, xlab = "Year Collected", 
+     ylab = "DNA Concentration for Ben", main = "DNA Concentration", breaks = 7)
+
+#plot(x=dna$DNA_Concentration_Katy, y=dna$Year_Collected)
+
+
+#hist(dna, x=dna$Year_Collected, y=dna$DNA_Concentration_Katy)
+#hist(dna,x=dna$DNA_Concentration_Katy)
+
+hist(dna2, 
+     main="Histogram for DNA Concentration", 
+     xlab="Concentrations", 
+     border="blue", 
+     col="green",
+     breaks = 6)
+>>>>>>> 6ecff8970a273471acf9858e1d8e9c49c1fa2b7f
 
 hist(dna$DNA_Concentration_Katy, xlab = "Concentration" , ylab = "Frequency" , main="DNA Concentration", breaks = 6)
 hist(dna$DNA_Concentration_Ben, xlab="Concentration", ylab = "Freqency", main = "DNA Concentration", breaks=7)
