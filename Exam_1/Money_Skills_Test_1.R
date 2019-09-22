@@ -27,10 +27,10 @@ class(dna2)
 
 
 hist(dna$DNA_Concentration_Katy,x=dna$Year_Collected, xlab = "Year Collected", 
-     ylab = "DNA Concentration for Katy", main = "DNA Concentration", breaks = 6)
+     ylab = "Concentrations", main = "DNA Concentration", breaks = 6, col = "blue")
 
 hist(dna$DNA_Concentration_Ben,x=dna$Year_Collected, xlab = "Year Collected", 
-     ylab = "DNA Concentration for Ben", main = "DNA Concentration", breaks = 7)
+     ylab = "Concentrations", main = "DNA Concentration", breaks = 7, col = "green")
 
 #plot(x=dna$DNA_Concentration_Katy, y=dna$Year_Collected)
 
