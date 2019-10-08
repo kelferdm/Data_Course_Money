@@ -8,18 +8,12 @@ dna<-read.csv("../Exam_1/DNA_Conc_by_Extraction_Date.csv")
 
 names(dna)
 
-<<<<<<< HEAD
-class(dna) #data.frame = needs to be numeric
-class(dna$Year_Collected)
-class(dna$DNA_Concentration_Katy)
-=======
 class(dna$Year_Collected) #data.frame = needs to be numeric
 class(dna$Extract.Code)
 class(dna$Date_Collected)
 class(dna$DNA_Concentration_Katy)
 class(dna$Lab)
 
->>>>>>> 6ecff8970a273471acf9858e1d8e9c49c1fa2b7f
 
 library(dplyr)
 dna2 <- mutate_all(dna$, function(x) as.numeric(as.character(x)))
@@ -31,14 +25,12 @@ class(dna2)
 
 #histograms of DNA concentrations (add labels)
 
-<<<<<<< HEAD
-=======
 
 hist(dna$DNA_Concentration_Katy,x=dna$Year_Collected, xlab = "Year Collected", 
-     ylab = "Concentrations", main = "DNA Concentration", breaks = 6, col = "blue")
+     ylab = "Concentrations", main = "Histogram for DNA Concentration", breaks = 6, col = "blue")
 
 hist(dna$DNA_Concentration_Ben,x=dna$Year_Collected, xlab = "Year Collected", 
-     ylab = "Concentrations", main = "DNA Concentration", breaks = 7, col = "green")
+     ylab = "Concentrations", main = "Histogram for DNA Concentration", breaks = 7, col = "green")
 
 #plot(x=dna$DNA_Concentration_Katy, y=dna$Year_Collected)
 
@@ -46,16 +38,13 @@ hist(dna$DNA_Concentration_Ben,x=dna$Year_Collected, xlab = "Year Collected",
 #hist(dna, x=dna$Year_Collected, y=dna$DNA_Concentration_Katy)
 #hist(dna,x=dna$DNA_Concentration_Katy)
 
-hist(dna2, 
-     main="Histogram for DNA Concentration", 
-     xlab="Concentrations", 
-     border="blue", 
-     col="green",
-     breaks = 6)
->>>>>>> 6ecff8970a273471acf9858e1d8e9c49c1fa2b7f
+#hist(dna2, 
+    # main="Histogram for DNA Concentration", 
+  #   xlab="Concentrations", 
+   #  border="blue", 
+    # col="green",
+     #breaks = 6)
 
-hist(dna$DNA_Concentration_Katy, xlab = "Concentration" , ylab = "Frequency" , main="DNA Concentration", breaks = 6)
-hist(dna$DNA_Concentration_Ben, xlab="Concentration", ylab = "Freqency", main = "DNA Concentration", breaks=7)
 
 #II. 	
 #Your second task is to look at DNA concentrations from the different extraction years. 
@@ -73,20 +62,14 @@ summary(katy)
 names(dna)
 #boxplot(dna~dna$Year_Collected,xlab="Katy", ylab="Year")
 ?boxplot
+boxplot(dna,data=dna,x=dna$DNA_Concentration_Katy, y=dna$Year_Collected, xlab="Year", ylab ="Concentration")
+dna$DNA_Concentration_Katy
+#year<-dna[dna$Year_Collected,]
+#dna[dna$DNA_Concentration_Katy,]
+    
+#dna[dna$Extract.Code,]
+#dna[dna$Date_Collected,]
 
-
-#create vector for Years and Katy called katyyear
-katyyear <-dna[,c('Year_Collected', 'DNA_Concentration_Katy')]
-benyear <- dna[,c('Year_Collected', 'DNA_Concentration_Ben')]
-#use vector to compare both year and katy
-#katy and years
-jpeg("Money_Plot1.jpeg")
-boxplot(DNA_Concentration_Katy ~ Year_Collected, data = dna, xlab="Year", ylab = "DNA Concentrations", main="Katy's Extractions")
-dev.off()
-
-jpeg("Money_Plot2.jpeg")
-boxplot(DNA_Concentration_Ben ~ Year_Collected, data=dna, xlab="Year", ylab = "DNA Concentrations", main="Ben's Extrations")
-dev.off()
 
 #IV.
 #Take a look at Ben's concentrations vs Katy's concentrations. You can do this however you 
@@ -101,24 +84,10 @@ summary(ben)
 summary(katy)
 dna$DNA_Concentration_Ben
 
-min(katyyear)
-summary(benyear)
-summary(katyyear)
-
-all(katyyear==benyear)
+min(dna$DNA_Concentration_Ben)
+min(dna$DNA_Concentration_Katy)
 
 
-benkaty<-dna[,c('Year_Collected','DNA_Concentration_Ben','DNA_Concentration_Katy')]
-summary(benkaty)
-
-# Find difference between Ben and Katy
-difference <- dna$DNA_Concentration_Ben - dna$DNA_Concentration_Katy
-
-# find maximum difference
-max.difference <- which(difference == max(difference))
-
-# use that to find the year in which it occurred
-dna[max.difference,"Year_Collected"]
 
 #V.
 #Do another subset of the data for me. 
@@ -135,26 +104,13 @@ plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben,
 
 #which(rowSums(dna$DNA_Concentration_Ben) == max(rowSums(dna$DNA_Concentration_Ben)))
 
-# Subset to "Downstairs"
-down <- dat[dat$Lab == "Downstairs",]
 
-# convert "Date_Collected" into POSIXct date-time class
-down$Date_Collected <- as.POSIXct(down$Date_Collected)
+dateforben <- 
+downstair$Date_Collected
 
-# make scatterplot
-plot(x=downstair$Date_Collected,y=downstair$DNA_Concentration_Ben)
-
-dateforben <- downstair$Date_Collected
-
-#subset for Downstairs
 downstair<-dna[dna$Lab == "Downstairs",]
 
-#convert date-time
-downstair$Date_Collected <- as.POSIXct(downstair$Date_Collected)
+jpeg("../Data_Course_Money/Exam_1/Ben_DNA_over_time.jpg")
 plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
-
-
-jpeg("Ben_DNA_over_time.jpeg")
-plot(x=downstair$Date_Collected, y=downstair$DNA_Concentration_Ben, main="Ben DNA over time",xlab="Date",ylab="Concentration")
-dev.off()
+dev.off
 
