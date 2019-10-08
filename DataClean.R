@@ -75,3 +75,5 @@ for(i in fnb[5:24]) {
 
 rbind(fnf002.edited,fnf003.edited, fnf004.edited, fnf005.edited, fnf006.edited, fnf007.edited,fnf008.edited,fnf009.edited,
       fnf010.edited,fnf011.edited,fnf012.edited)
+
+
