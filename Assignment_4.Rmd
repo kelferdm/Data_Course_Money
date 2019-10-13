@@ -46,11 +46,9 @@ We will use the built-in function read.table() to load some data.
 
 ```{r, echo=TRUE}
 ?read.table() #This brings up the help file
-##reads tabular data 
-#all columns are read as char columns
 df = read.csv("../../Data/landdata-states.csv") # why did I change to read.csv ???
-class(df) # what type of object is df?
-head(df) # shows the first 6 elements of an object (first 6 rows if you give it a data frame)
+class(df) # what type of object is df? data.frame
+head(df) # shows the first 6 elements of an object (first 6 rows if you give it a data frame) 1:6
 ```
 
 
@@ -61,8 +59,12 @@ The read.csv() function is a convenient way to tell R that those commas represen
 **Questions:**
 
   + **1. What other stuff does read.csv() do automatically?**
+  reads in columns as characters and converts to integer, numeric factors. 
   + **2. How is it different from read.csv2()?**
+  separates columns based on semi-colons instead of commas
+  
   + **3. Why does read.csv2() even exist?**
+  to be able to read in files that use a comma instead of a decimal. 
 
 
 Now, I notice that each column in this data frame has its own class. Let's look at a couple
@@ -84,14 +86,12 @@ Now, let's explore this data set a bit with basic descriptive stats...
 dim(df) # dimensions of the data frame (rows, columns)
 str(df) # another nice way to glimpse a data frame
 summary(df) # summary() works differently for different data classes. Note how it summarizes factors vs numerics
-summary(df$Home.Value)
 ```
 
 **Questions:**
 
   + **5. What command would give the summary stats for ONLY the Home.Value column?**
   + **6. What value is returned by the command: names(df)[4]  ?**
-  names(df)[4]
   
 ____________
 

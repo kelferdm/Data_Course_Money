@@ -1,0 +1,3 @@
+
+if([@[Elected])
+if([@[Finance Certified]]="Yes","Yes","No"

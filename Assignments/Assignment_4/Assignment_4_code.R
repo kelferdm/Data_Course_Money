@@ -9,4 +9,11 @@ df<-read.csv("../Data_Course/Data/landdata-states.csv")
 ##      Hints on below ...
 ##3.  Make sure to save your completed script and Rproject and make sure your png file is saved correctly
 ##4.  Push all these saved changes and new files onto your GitHub repository so I can grade them
-##5.  Don't forget the plaintext file with answers to bolded questions needs to go to Canvas as well!      
+##5.  Don't forget the plaintext file with answers to bolded questions needs to go to Canvas as well!   
+
+
+#1
+df<-read.csv("../Data_Course/Data/ITS_mapping.csv")
+
+
+

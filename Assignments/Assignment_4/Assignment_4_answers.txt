@@ -1,0 +1,24 @@
+**Questions:**
+
+1. What other stuff does read.csv() do automatically?
+  reads in columns as characters and converts to integer, numeric factors. 
+
+2. How is it different from read.csv2()?
+csv2 separates on semicolon
+csv separates on commas
+
+3. Why does read.csv2() even exist?
+  to be able to read in files that use a comma instead of a decimal. 
+
+4. How could I change the parameters of read.csv() 
+to make it so the class of the "State" column is "character" instead of "factor?"**
+
+  df = read.csv("../Data_Course/Data/landdata-states.csv", stringsAsFactors = FALSE)
+
+
+
+5. What command would give the summary stats for ONLY the Home.Value column?
+summary(df$Home.Value)
+
+6. What value is returned by the command: names(df)[4]  ?**
+[1] "Home.Value"
