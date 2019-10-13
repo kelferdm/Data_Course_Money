@@ -46,7 +46,7 @@ We will use the built-in function read.table() to load some data.
 
 ```{r, echo=TRUE}
 ?read.table() #This brings up the help file
-df = read.csv("../../Data/landdata-states.csv") # why did I change to read.csv ???
+df = read.csv("../Data_Course/Data/landdata-states.csv") # why did I change to read.csv ???
 class(df) # what type of object is df? data.frame
 head(df) # shows the first 6 elements of an object (first 6 rows if you give it a data frame) 1:6
 ```
@@ -76,6 +76,7 @@ class(df$Date)
 **Questions:**
 
   + **4. How could I change the parameters of read.csv() to make it so the class of the "State" column is "character" instead of "factor?"**
+  df = read.csv("../Data_Course/Data/landdata-states.csv", stringsAsFactors = FALSE)
 
 ____________
 
