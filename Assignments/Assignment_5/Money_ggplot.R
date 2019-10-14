@@ -56,7 +56,9 @@ ggplot(iris, aes(x=iris$Sepal.Length, y=iris$Petal.Length)) + geom_point() +
                 y= "Ratio of Sepal Width to Petal Width",
                 fill = "Species")
                
-  #4 Diverging Bars
+  
+  
+  #4 Diverging Bars - not correct
   
   # find decreasing order of deviancesep
   devorder = as.character(order(devianceSep,decreasing = TRUE))
@@ -76,8 +78,23 @@ ggplot(iris, aes(x=iris$Sepal.Length, y=iris$Petal.Length)) + geom_point() +
   
   
   
+  ###send file as png to Assignment_5 file
   
+  png(filename = "../../../Data_Course_Money/Assignments/Assignment_5/divergingbars_graph.png")
   
+  ggplot(iris, aes(y=devianceSep, x=1:nrow(iris), label=Species)) + 
+    geom_bar(stat='identity', width=.5,position = "dodge")  +
+    # scale_fill_manual(name="Species", 
+    #                   labels = iris@Species, 
+    #                   values = c("above"="#00ba38", "below"="#f8766d", "#FF9900")) + 
+    labs(subtitle="Mean", 
+         title= "Deviation")+
+    scale_y_discrete(breaks = as.numeric(devorder)) +
+    coord_flip() +
+    theme_minimal()
+  guides(fill = FALSE)
+  
+  dev.off()
   
   
   
@@ -148,12 +165,3 @@ ggplot(iris, aes(x=iris$Sepal.Length, y=iris$Petal.Length)) + geom_point() +
 
 
 
-
-##3.  Keep in mind that by default, I make most of my figures with theme_minimal() 
-##4.  Read through the different plot types on this website 
-
-##<http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html> 
-  
-##  and use the info to reproduce the fourth figure below. Save it as "iris_fig4.png"
-##This last task requires you to use the internet to solve a tricky R task.  This is the most important skill you can learn in this course!
-##  You'll probably have to figure out some functions you've not seen before and reconfigure them to the iris data.
