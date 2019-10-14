@@ -58,55 +58,87 @@ ggplot(iris, aes(x=iris$Sepal.Length, y=iris$Petal.Length)) + geom_point() +
                
   #4 Diverging Bars
   
-  ggplot(iris, aes(x='Distance from the mean', y=Species, label=Species)) + 
-    geom_bar(stat='identity', aes(fill = Species), width=.5)  + coord
-    scale_fill_manual(name="Species", 
-                      labels = c("Above Average", "Below Average"), 
-                     values = c("above"="#00ba38", "below"="#f8766d")) + 
+  # find decreasing order of deviancesep
+  devorder = as.character(order(devianceSep,decreasing = TRUE))
+  
+  iris$Species
+  ggplot(iris, aes(y=devianceSep, x=1:nrow(iris), label=Species)) + 
+    geom_bar(stat='identity', width=.5,position = "dodge")  +
+    # scale_fill_manual(name="Species", 
+    #                   labels = iris@Species, 
+    #                   values = c("above"="#00ba38", "below"="#f8766d", "#FF9900")) + 
     labs(subtitle="Mean", 
-         title= "Diverging Bars") + 
-    coord_flip()
+         title= "Deviation")+
+    scale_y_discrete(breaks = as.numeric(devorder)) +
+    coord_flip() +
+    theme_minimal()
+  guides(fill = FALSE)
   
-    devianceSep <- iris$Sepal.Length - mean(iris$Sepal.Length)
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  # ggplot(iris, aes(x='Distance from the mean', y=Species, label=Species)) + 
+  #   geom_bar(stat='identity', aes(fill = Species), width=.5)  + coord
+  #   scale_fill_manual(name="Species", 
+  #                     labels = c("Above Average", "Below Average"), 
+  #                    values = c("above"="#00ba38", "below"="#f8766d")) + 
+  #   labs(subtitle="Mean", 
+  #        title= "Diverging Bars") + 
+  #   coord_flip()
+  
+    # devianceSep <- iris$Sepal.Length - mean(iris$Sepal.Length)
+    # 
+    # 
+    # ggplot(data = iris,
+    #        aes(x = iris$Species, y = devianceSep,
+    #            fill = iris$Species))+
+    #   geom_bar(stat = "identity") +
+    #   coord_flip() +
+    # 
+    # 
+    #   labs(x = "Distance from the Mean",
+    #        title = "Sepal length deviation from the mean of observations",
+    #        subtitles = "")+
+    #   theme_minimal()+
+    #   guides(fill = FALSE)
+    # 
+    # 
+    # # find decreasing order of deviancesep
+    # devorder = as.character(order(devianceSep,decreasing = TRUE))
+    # 
+    # iris$Species
+    # ggplot(iris, aes(y=devianceSep, x=1:nrow(iris), label=Species)) + 
+    #   geom_bar(stat='identity', width=.5,position = "dodge")  +
+    #   # scale_fill_manual(name="Species", 
+    #   #                   labels = iris@Species, 
+    #   #                   values = c("above"="#00ba38", "below"="#f8766d", "#FF9900")) + 
+    #   labs(subtitle="Mean", 
+    #        title= "Deviation")+
+    #   scale_y_discrete(breaks = as.numeric(devorder)) +
+    #   coord_flip() +
+    #   theme_minimal()
+    # guides(fill = FALSE)
+    # 
     
-    ggplot(data = iris,
-           aes(x = iris$Species, y = devianceSep,
-               fill = iris$Species))+
-      geom_bar(stat = "identity") +
-      coord_flip() +
-   
-    
-      labs(x = "Distance from the Mean",
-           title = "Sepal length deviation from the mean of observations",
-           subtitles = "")+
-      theme_minimal()+
-      guides(fill = FALSE)
-    
-    
-    # find decreasing order of deviancesep
-    devorder = as.character(order(devianceSep,decreasing = TRUE))
-    
-    iris$Species
-    ggplot(iris, aes(y=devianceSep, x=1:nrow(iris), label=Species)) + 
-      geom_bar(stat='identity', width=.5,position = "dodge")  +
-      # scale_fill_manual(name="Species", 
-      #                   labels = iris@Species, 
-      #                   values = c("above"="#00ba38", "below"="#f8766d", "#FF9900")) + 
-      labs(subtitle="whatever", 
-           title= "Diverging Bars")+
-      scale_y_discrete(breaks = as.numeric(devorder)) +
-      coord_flip()
-    
-    
-    ggplot(iris, aes(x= 'deviationSep', y=iris$Species, label=iris$Species)) + 
-      geom_bar(stat='identity', aes(fill=iris$Species), width=.5)  +
+    #ggplot(iris, aes(x= 'deviationSep', y=iris$Species, label=iris$Species)) + 
+     # geom_bar(stat='identity', aes(fill=iris$Species), width=.5)  +
      # scale_fill_manual(name="Species", 
       #                  labels = c("Above Average", "Below Average"), 
        #                 values = c("above"="#00ba38", "below"="#f8766d", "#FF9900")) + 
-      labs(subtitle="whatever", 
-           title= "Diverging Bars") + 
-      coord_flip()
+      #labs(subtitle="Mean", 
+       #    title= "Deviation") + 
+      #coord_flip()
     
    
   ##scale_color_manual(values=pal)
