@@ -4,6 +4,7 @@ library(knitr)
 
 #1.  loads the mtcars data set
 data("mtcars")
+df <- mtcars
 
 #2.  subsets the mtcars dataframe to include only **automatic transmissions**
 
@@ -107,10 +108,56 @@ dev.off()
  
  
 #8.  subsets the original mtcars dataframe to include only cars with displacements less than or equal to 200 cu.in.
+
+
+max200 <- mtcars[which(mtcars$disp <= 200),]
+max200
+
+
  
  
 #9.  saves that new subset as a csv file called mtcars_max200_displ.csv
+
+write.csv(max200,'../../../Data_Course_Money/Assignments/Assignment_6/mtcars_max200.csv')
+
  
  
 #10. includes code to calculate the maximum horsepower for each of the three dataframes (original, automatic, max200)
+
+
+#max horsepower in mtcars, max200, newdata
+#gives maximum of all three dataframes = 335
+maxMaxHorsepower <- max(mtcars$hp, newdata$hp, max200$hp)
+
+
+#gives maximum of individual dataframes
+maxMT <-max(mtcars$hp)
+maxNew <- max(newdata$hp)
+maxMax<-max(max200$hp)
+
+AllMax <- c(maxMT,maxNew,maxMax)
+AllMax
+
+#can't combine bc different # of rows
+Alldf <- data.frame(mtcars,newdata,max200) 
+
+##merged three dataframes
+mergedf <-merge(df, merge(newdata, max200, by="mpg", all.x=TRUE, all.y=TRUE), by = "mpg", all.x = TRUE, all.y = TRUE)
+
+mergedf
+#max of merged dataframes
+maxhp <- max(mergedf$hp)
+
+maxhp #335
+
+write.csv(AllMax, "../../../Data_Course_Money/Assignments/Assignment_6/hp_maximums.txt")
+
 #11. prints these calculations (from task 10) in a readable format to a new plaintext file called hp_maximums.txt
+
+
+
+
+
+
+
+
