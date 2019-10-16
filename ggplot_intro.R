@@ -210,6 +210,8 @@ ggplot(MplsStops, aes(x=income)) + geom_histogram(bins = 30)
 
 counts = as.data.frame(table(MplsStops$income))
 counts$Var1 <- as.numeric(as.character(counts$Var1))
+
+
 mod1 = lm(Freq ~ Var1, data = counts)
 
 ggplot(counts, aes(x=Var1,y=Freq)) + geom_point() + geom_smooth(method="lm") +

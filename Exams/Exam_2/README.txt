@@ -40,6 +40,9 @@ I. 	Simple tidying exercise
         Title = "Faculty Salaries - 1995"
 
     4.  Export this delightful boxplot to a file named "LASTNAME_exam2_plot1.jpeg" (10 points)
+###DONE
+
+
 
 
 II. Linear modeling and predictions

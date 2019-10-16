@@ -33,7 +33,9 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
        y= "Salry",
        fill = "Rank")
   
-  newsalaries
+  
+  
+  #just checking salary numbers
  max(newsalaries$Salaries, na.rm = TRUE)
 
  
@@ -53,3 +55,21 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
  dev.off()
  
  
+ 
+ ###Part 2 ####
+ 
+ ##1.  Read in atmosphere.csv (pretty clean data set)
+ 
+  atmosphere <- read.csv(file="../../Desktop/Data_Course_Money/Exams/Exam_2/atmosphere.csv", header=TRUE, sep=",")
+
+ atmosphere
+ 
+ # 2.  Create three different linear models with Diversity as the dependent variable (Diversity as a function of...
+ ### (the dependent variable is set up first). 
+ #The three models should have different
+ #predictors, or at least different numbers of predictors, with or without interaction terms. (10 points) 
+ mod1 <- lm(Diversity~Aerosol_Density, data = atmosphere)
+ 
+ mod2 <- lm(Diversity ~ CO2_Concentration, data = atmosphere)
+ 
+ mod3 <- lm(Diversity ~ Precip, data = atmosphere)
