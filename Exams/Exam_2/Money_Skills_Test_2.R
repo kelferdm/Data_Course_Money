@@ -73,3 +73,19 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
  mod2 <- lm(Diversity ~ CO2_Concentration, data = atmosphere)
  
  mod3 <- lm(Diversity ~ Precip, data = atmosphere)
+ 
+ 
+ #3.  Compare the residuals of the three models and somehow document 
+ #which has best explanatory power for the data (10 points)
+ 
+ residuals(mod1)
+ mean(residuals(mod1)^2)
+ mean(residuals(mod2)^2)
+ mean(residuals(mod3)^2)#### the one with the smallest mean squared
+
+ plot(mod1)
+ plot(mod2)
+ plot(mod3)
+ 
+ 
+ 
