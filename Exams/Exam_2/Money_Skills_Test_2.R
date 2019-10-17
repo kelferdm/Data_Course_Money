@@ -87,5 +87,7 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
  plot(mod2)
  plot(mod3)
  
+# 4.  Use all your models to predict Diversity values in the data set (10 points)
+ 
  
  
