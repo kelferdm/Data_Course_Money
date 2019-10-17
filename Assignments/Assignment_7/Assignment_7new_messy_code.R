@@ -96,8 +96,14 @@ group6 = mean(utah[utah$Pop.Group == 6,]$Religious)
 
 
 utah %>% group_by(Pop.Group) %>%
-  summarize(meanreligious = mean(Religious))
-
+  summarize(meanreligious = mean(Religious)) %>%
+  
+  
+  
+  utah_long %>% group_by(Pop.Group) %>%
+  summarize(meanreligious = mean(Religious)) %>%
+  summarise(mean.pop = mean(Pop_2010))
+utah_long
 
 # group1 
 # 
@@ -118,7 +124,7 @@ group6.pop = mean(utah[utah$Pop.Group == 6,]$Pop_2010)
 
 utah%>%
   group_by(Pop.Group) %>%
-  summarise(meanpopulation = mean(Pop_2010))
+  summarise(Mean.Pop = mean(Pop_2010))
 
 
 # make data frame of each group and mean religiosity
@@ -128,15 +134,45 @@ religiosity = data.frame(Pop.Group = c("group1","group2","group3","group4","grou
 
 religiosity # take quick look at resulting table
 
-utah %>%
-  group_by(Pop.Group)%>%
-   summarize(meanreligiousity = mean(Religious)) %>%
-  summarize(Mean.Pop)
+religiosity2 <- utah %>%
+  group_by(Pop.Group, Religious, Pop_2010)%>%
+   summarize(mean.relig = mean(Religious))
+
+religiosity2
+
 
 # order by decreasing population
-religiosity = religiosity[order(religiosity$Mean.Pop, decreasing = TRUE),]
+#religiosity = religiosity[order(religiosity$Mean.Pop, decreasing = TRUE),]
 
-religiosity # take quick look at resulting table
+#religiosity # take quick look at resulting table
+
+religiosity2
+
+  religiosity2 %>%
+    group_by(Pop.Group) %>%
+    arrange(Pop.Group, desc(Pop_2010)) %>%
+    summarize(Mean.Pop = mean(Pop_2010))
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  # %>%
+  # summarize(mean.relig = mean(Religious)) %>%
+  #   summarise(mean.pop = mean(Pop_2010))
+  #   arrange(mean.pop, desc(mean.pop))
+  # 
+  # religiosity2 %>%
+  #   arrange(desc(Mean.Pop))
+  #  
+  # 
+  # 
+  # arrange(order, desc(sleep_total)) %>% 
 
 
 #####################################
@@ -155,8 +191,12 @@ for(i in religions){
 
 # Browse through those plots and answer the following questions:
 # 1.  Which religious group correlates most strongly in a given area with the proportion of non-religious people?
+    LDS
 # 2.  What is the direction of that correlation?
+    negative - where there is a higher percentage of LDS there is a lower percentage of non-religious 
+  
 # 3.  Which religious group has the second stronglest correlation, as above?
+    pentecostal
 # 4.  What is the direction of THAT correlation?
 # 5.  What can you say about these relationships?
 
