@@ -89,5 +89,22 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
  
 # 4.  Use all your models to predict Diversity values in the data set (10 points)
  
+ add_predictions(atmosphere,mod1)
+ add_predictions(atmosphere,mod2)
+ add_predictions(atmosphere,mod3)
+ 
+ 
+ 
+#  5.  Make a plot showing actual Diversity values, along with the three models' predicted Diversity values.
+#     Use color or some other aesthetic to differentiate the actual values and all three predictions (20 points)
+# 	Hint: gather_predictions()   ...wait, what is this magical function!? Maybe this hint should be for #4 ???
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
