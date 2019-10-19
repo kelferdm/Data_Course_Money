@@ -89,9 +89,13 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
  
 # 4.  Use all your models to predict Diversity values in the data set (10 points)
  
- add_predictions(atmosphere,mod1)
- add_predictions(atmosphere,mod2)
- add_predictions(atmosphere,mod3)
+ 
+ library(modelr)
+ preds1 <- add_predictions(atmosphere,mod1)
+ preds2 <-add_predictions(atmosphere,mod2)
+ preds <-add_predictions(atmosphere,mod3)
+ 
+ 
  
  
  
@@ -99,6 +103,34 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
 #     Use color or some other aesthetic to differentiate the actual values and all three predictions (20 points)
 # 	Hint: gather_predictions()   ...wait, what is this magical function!? Maybe this hint should be for #4 ???
  
+ 
+ 
+ 
+atmos<- atmosphere %>%
+   gather_predictions(mod1, mod2, mod3)
+
+
+#mod1
+{plot(atmosphere$Diversity ~ atmosphere$Aerosol_Density)
+  points(x=atmos$Aerosol_Density  , y= atmos$pred, col="Red")
+  abline(mod1)
+   }
+
+#mod2
+
+{plot(atmosphere$Diversity ~ atmosphere$CO2_Concentration)
+  points(x=atmos$CO2_Concentration  , y= atmos$pred, col="Red")
+  abline(mod2)
+}
+#mod3
+
+{plot(atmosphere$Diversity ~ atmosphere$Precip)
+  points(x=atmos$Precip  , y= atmos$pred, col="Red")
+  abline(mod3)
+}
+
+
+
  
  
  
