@@ -42,7 +42,7 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
 # 
 # 4.  Export this delightful boxplot to a file named "LASTNAME_exam2_plot1.jpeg" (10 points)
  
- jpeg(filename = "../Data_Course_Money/Exams/Exam_2/ Money_exam2_plot1.jpeg")
+ # jpeg(filename = "../Data_Course_Money/Exams/Exam_2/ Money_exam2_plot1.jpeg")
  
  ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsalaries$Rank)) + geom_boxplot() +
    theme_bw() +
@@ -51,8 +51,10 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
         x = "Tier",
         y= "Salry",
         fill = "Rank")
+ ggsave("../Data_Course_Money/Exams/Exam_2/Money_Exam2_plot1.jpg")
  
- dev.off()
+ 
+ # dev.off()
  
  
  
@@ -109,6 +111,11 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
 atmos<- atmosphere %>%
    gather_predictions(mod1, mod2, mod3)
 
+
+ggplot(atmos, aes(x=Aerosol_Density,y=Diversity,color=model)) +
+  geom_point() +
+  geom_point(aes(y=pred),color="Red") +
+  facet_wrap(~model)
 
 #mod1
 {plot(atmosphere$Diversity ~ atmosphere$Aerosol_Density)
