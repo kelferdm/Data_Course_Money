@@ -8,7 +8,7 @@ glimpse(df)
 
 # 2.  creates several plots exploring relationships between the response and predictors
 
-mod1 = lm(Light ~ GrowthRate, data = df)
+mod1 = lm(GrowthRate ~ Light, data = df) ##### Response variable needs to be on the left side
 summary(mod1)
 
 
@@ -72,14 +72,19 @@ preds1
 
 # 7.  plots these predictions alongside the real data
 
-{plot(mtcars$mpg ~ mtcars$disp,xlim=c(0,1000),ylim=c(-10,50))
-  points(x=newdf$disp,y=predictions, col="Red")
-  abline(mod1)}
+
 
 {plot(df$Temperature ~ df$GrowthRate)
   points(x=preds$Temperature, y= preds$pred, col="Red")
   abline(mod4)
 }
+
+df
+library(ggplot2)
+ggplot(preds1, aes(x=Temperature,y=GrowthRate)) +
+  geom_point() +
+  geom_point(aes(y=pred),color="Blue",size=6)
+
 
 {plot(df$Light ~ df$GrowthRate)
   points(x=preds$Light, y= preds1$pred, col="Red")
@@ -89,6 +94,8 @@ preds1
 
 # + Upload responses to the following as a numbered plaintext document to Canvas:
 #   1.  Are any of your predicted response values from your best model scientifically meaningless? Explain.
+
+ #Yes, because I wrote it incorrectly. It was measuring how light is affected by growth rate.
 
 
 # 2.  In your plots, did you find any non-linear relationships?  No

@@ -137,6 +137,37 @@ ggplot(atmos, aes(x=Aerosol_Density,y=Diversity,color=model)) +
 }
 
 
+# 6.  Write code to show the predicted values of Diversity for each model using the hypothetical new data 
+# found in hyp_data.csv (10 points)
+df2<-read.csv("../Data_Course/Exam_2/hyp_data.csv")
+
+summary(df2)
+
+predict(mod1,newdata = df2)
+predict(mod2, newdata = df2)
+predict(mod3, newdata = df2)
+
+
+
+
+library(caret)
+
+# 
+# 
+# 
+# 7.  Export a text file that contains the summary output from *both* your models to "model_summaries.txt" (10 points)
+# (Hint: use the sink() function)
+
+
+
+sink("../Data_Course_Money/Exams/Exam_2/model_summaries.txt")
+summary(mod1)
+summary(mod2)
+summary(mod3)
+sink(NULL)  # returns output to the console
+
+getwd()
+
 
  
  

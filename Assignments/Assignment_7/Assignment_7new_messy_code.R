@@ -193,7 +193,8 @@ for(i in religions){
 # 1.  Which religious group correlates most strongly in a given area with the proportion of non-religious people?
     LDS
 # 2.  What is the direction of that correlation?
-    negative - where there is a higher percentage of LDS there is a lower percentage of non-religious 
+    #negative - for every decrease in LDS there is an increase in non_religious - The points are most tightly packed
+   # around the trend line.
   
 # 3.  Which religious group has the second stronglest correlation, as above?
     pentecostal

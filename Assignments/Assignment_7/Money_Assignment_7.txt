@@ -1,16 +1,15 @@
-# Browse through those plots and answer the following questions:
-
-
 # 1.  Which religious group correlates most strongly in a given area with the proportion of non-religious people?
-
-LDS
+   # LDS
 # 2.  What is the direction of that correlation?
-negative - for every decrease in LDS there is an increase in non_religious 
-
+    #negative - for every decrease in LDS there is an increase in non_religious - The points are most tightly packed
+   # around the trend line.
+  
 # 3.  Which religious group has the second stronglest correlation, as above?
-
-
+    #Episcopal church
+    
+    ##scatter around line is due to error or things that were not included in model
 # 4.  What is the direction of THAT correlation?
-
-
+    ##positive correlation
 # 5.  What can you say about these relationships?
+These graphs can't acurately describe the effect Non-Religious has on  *.Church and vice versa because there are likely other variables that influence
+the number of non-religious or religious population.
