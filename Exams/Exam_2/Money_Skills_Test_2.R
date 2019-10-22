@@ -81,6 +81,13 @@ ggplot(newsalaries, aes(y=newsalaries$Salaries, x=newsalaries$Tier, fill = newsa
  #which has best explanatory power for the data (10 points)
  
  residuals(mod1)
+ mean(abs(residuals(mod1)))
+ 
+ mean(abs(residuals(mod2)))
+ 
+ mean(abs(residuals(mod3)))
+ 
+ 
  mean(residuals(mod1)^2)
  mean(residuals(mod2)^2)
  mean(residuals(mod3)^2)#### the one with the smallest mean squared
@@ -171,7 +178,20 @@ getwd()
 
  
  
- 
+ #9.
+ library(caret)
+trainingsamples <- caret::createDataPartition(atmosphere$Diversity, .5)
+trainingsamples = unlist(trainingsamples)
+train = atmosphere[trainingsamples,]
+test = atmosphere[-trainingsamples,]
+
+bestmod = lm(formula = Diversity ~ Precip * Year, data = train)
+
+best_preds = add_predictions(test, bestmod)
+
+ggplot(best_preds, aes(x=Precip)) +
+  geom_point(aes(y=Diversity), color = "Black") +
+  geom_point(aes(y=pred), color = "Red", size = 4)
  
  
  
